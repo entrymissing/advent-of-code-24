@@ -26,3 +26,6 @@ class Map(object):
     if x >= self.max_x or y >= self.max_y:
       return out_of_bounds_return_value
     return self.map[x][y]
+  
+  def set(self, x, y, value):
+    self.map[x][y] = value
