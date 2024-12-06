@@ -5,14 +5,14 @@ def parse_lines(lines):
   left = []
   right = []
   for line in lines:
-    l,r = line.strip().split()
+    l, r = line.strip().split()
     left.append(int(l))
     right.append(int(r))
   return left, right
 
 
 def test_parse_lines():
-  assert parse_lines(['1 2', '3 4']) == ([1, 3], [2, 4]) 
+  assert parse_lines(['1 2', '3 4']) == ([1, 3], [2, 4])
 
 
 def solve_1(testing):
@@ -21,8 +21,8 @@ def solve_1(testing):
   left, right = parse_lines(lines)
 
   diff = 0
-  for l,r in zip(sorted(left), sorted(right)):
-    diff += abs(l-r)
+  for le, r in zip(sorted(left), sorted(right)):
+    diff += abs(le-r)
   return diff
 
 
@@ -37,10 +37,11 @@ def solve_2(testing):
   left, right = parse_lines(lines)
 
   res = 0
-  for l in left:
-      c = right.count(l)
-      res += c * l
+  for le in left:
+      c = right.count(le)
+      res += c * le
   return res
+
 
 def test_solve_2():
   assert solve_2(True) == 31

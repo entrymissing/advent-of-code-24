@@ -1,5 +1,6 @@
 import util
 
+
 def is_levels_safe(levels):
   increasing = levels[0] < levels[1]
   for idx in range(len(levels)-1):
@@ -13,9 +14,10 @@ def is_levels_safe(levels):
       return False
   return True
 
+
 def solve_1(testing):
   lines = util.readfile(2, testing)
-  all_levels = [l.split() for l in lines]
+  all_levels = [li.split() for li in lines]
 
   total_safe = 0
   for levels in all_levels:
@@ -24,13 +26,15 @@ def solve_1(testing):
       total_safe += 1
   return total_safe
 
+
 def test_solve_1():
   assert solve_1(True) == 2
   assert solve_1(False) == 598
 
+
 def solve_2(testing):
   lines = util.readfile(2, testing)
-  all_levels = [l.split() for l in lines]
+  all_levels = [li.split() for li in lines]
 
   total_safe = 0
   for levels in all_levels:
@@ -44,9 +48,11 @@ def solve_2(testing):
 
   return total_safe
 
+
 def test_solve_2():
   assert solve_2(True) == 4
   assert solve_2(False) == 634
+
 
 if __name__ == '__main__':
   print(solve_1(True))
