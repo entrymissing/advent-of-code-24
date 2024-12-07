@@ -1,5 +1,5 @@
 def readfile(day, testing=False, suffix=None):
-  filename = f'input/{'test' if testing else 'input'}_{day:02d}.txt'
+  filename = f'input/{"test" if testing else "input"}_{day:02d}.txt'
   if suffix:
     filename = filename[:-4] + f'-{suffix}.txt'
   with open(filename) as fp:
