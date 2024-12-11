@@ -37,7 +37,7 @@ def solve_1(testing):
         break
 
     if is_valid_page:
-     sum_of_middle_pages += page[floor(len(page)/2)]
+      sum_of_middle_pages += page[floor(len(page)/2)]
 
   return sum_of_middle_pages
 
@@ -80,7 +80,8 @@ def test_solve_2_long():
   assert solve_2(False) == 5502
 
 
-print(solve_1(True))
-print(solve_1(False))
-print(solve_2(True))
-print(solve_2(False))
+if __name__ == '__main__':
+  print(solve_1(True))
+  print(solve_1(False))
+  print(solve_2(True))
+  print(solve_2(False))

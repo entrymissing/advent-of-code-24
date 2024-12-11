@@ -47,7 +47,8 @@ def solve_2(testing: bool):
   print(len(set([a.get() for a in antinodes])))
 
 
-# solve_1(True)
-# solve_1(False)
-solve_2(True)
-solve_2(False)
+if __name__ == '__main__':
+  solve_1(True)
+  solve_1(False)
+  solve_2(True)
+  solve_2(False)

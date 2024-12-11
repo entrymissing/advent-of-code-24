@@ -73,8 +73,9 @@ def test_solve_2():
   assert solve_2(True) == 6
 
 
-print(solve_1(True))
-print(solve_1(False))
-print(solve_2(True))
-# All hail brute force .. correct but slow
-# print(solve_2(False))
+if __name__ == '__main__':
+  print(solve_1(True))
+  print(solve_1(False))
+  print(solve_2(True))
+  # All hail brute force .. correct but slow
+  print(solve_2(False))

@@ -57,7 +57,8 @@ def test_solve_2_long():
   assert solve_2(False) == 189207836795655
 
 
-print(solve_1(True))
-print(solve_1(False))
-print(solve_2(True))
-print(solve_2(False))
+if __name__ == '__main__':
+  print(solve_1(True))
+  print(solve_1(False))
+  print(solve_2(True))
+  print(solve_2(False))
