@@ -22,6 +22,17 @@ class Vector(object):
       return Vector([a*other for a in self.pos])
     raise ValueError()
 
+  def __eq__(self, other):
+    if not isinstance(other, Vector):
+      return False
+    for val, val_other in zip(self.pos, other.get()):
+      if val != val_other:
+        return False
+    return True
+
+  def __hash__(self):
+    return hash(self.pos)
+
   def __str__(self):
     return f'{self.pos}'
 
@@ -46,6 +57,10 @@ def test_vector():
   assert (b-a).get() == (2, 2)
 
   assert (a*3).get() == (3, 6)
+
+
+MAIN_DIRECTIONS = (Vector((1, 0)), Vector((0, 1)),
+                   Vector((-1, 0)), Vector((0, -1)))
 
 
 class Map(object):
