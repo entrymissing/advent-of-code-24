@@ -22,6 +22,11 @@ class Vector(object):
       return Vector([a*other for a in self.pos])
     raise ValueError()
 
+  def __truediv__(self, other):
+    if isinstance(other, int):
+      return Vector([round(a/other) for a in self.pos])
+    raise ValueError()
+
   def __eq__(self, other):
     if not isinstance(other, Vector):
       return False
@@ -29,6 +34,13 @@ class Vector(object):
       if val != val_other:
         return False
     return True
+
+  def __mod__(self, other):
+    if isinstance(other, int):
+      other = Vector([other for _ in range(len(self.pos))])
+
+    self.pos = tuple([p % o for p, o in zip(self.pos, other.get())])
+    return self
 
   def __hash__(self):
     return hash(self.pos)
@@ -59,8 +71,12 @@ def test_vector():
   assert (a*3).get() == (3, 6)
 
 
-MAIN_DIRECTIONS = (Vector((1, 0)), Vector((0, 1)),
-                   Vector((-1, 0)), Vector((0, -1)))
+LEFT = Vector((-1, 0))
+RIGHT = Vector((1, 0))
+UP = Vector((0, -1))
+DOWN = Vector((0, 1))
+
+MAIN_DIRECTIONS = (UP, RIGHT, DOWN, LEFT)
 
 
 class Map(object):
@@ -73,7 +89,7 @@ class Map(object):
 
   def __str__(self):
     res = ''
-    for row in self.map:
+    for row in zip(*self.map):
       res += ''.join(row) + '\n'
     return res
 
@@ -87,5 +103,15 @@ class Map(object):
   def get_vector(self, pos: Vector, out_of_bounds_return_value=False):
     return self.get(pos.get_dim(0), pos.get_dim(1), out_of_bounds_return_value)
 
-  def set(self, x, y, value):
+  def set(self, x: int, y: int, value):
     self.map[x][y] = value
+
+  def set_vector(self, pos: Vector, value):
+    return self.set(pos.get_dim(0), pos.get_dim(1), value)
+
+  def find_first(self, value) -> tuple:
+    for x in range(self.max_x):
+      for y in range(self.max_y):
+        if self.map[x][y] == value:
+          return (x, y)
+    return None

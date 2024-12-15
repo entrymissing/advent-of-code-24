@@ -17,7 +17,7 @@ def solve(testing: bool, offset=0) -> int:
     price_line = lines.pop(0).split('=')[1:]
     e = int(price_line[0].split(',')[0])
     f = int(price_line[1])
-    
+
     if offset:
       e, f = e+offset, f+offset
 
