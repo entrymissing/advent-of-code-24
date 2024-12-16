@@ -57,7 +57,7 @@ def solve_1(testing: bool) -> int:
     pkl.dump(visited, open('input/test_16_2.pkl', 'wb+'))
   else:
     pkl.dump(visited, open('input/input_16_2.pkl', 'wb+'))
-  return min_cost_to_end   
+  return min_cost_to_end
 
 
 def solve_2(testing: bool) -> int:
@@ -93,27 +93,19 @@ def solve_2(testing: bool) -> int:
     for d in util.MAIN_DIRECTIONS:
       newPos = pos + d
       if newPos in visited:
-        if (visited[newPos] == val-1 or visited[newPos] == val-1000 or visited[newPos] == val-1001):    
+        if (visited[newPos] == val-1 or visited[newPos] == val-1000
+            or visited[newPos] == val-1001):
           to_visit.append((newPos, visited[newPos]))
           continue
       for conDir in util.MAIN_DIRECTIONS:
         if (newPos, conDir) in pkl_visited and (pos, conDir) in pkl_visited:
-          # print(pkl_visited[(newPos, conDir)], pkl_visited[(pos, conDir)])
           if pkl_visited[(newPos, conDir)] == pkl_visited[(pos, conDir)] - 1:
             if newPos not in spots:
               to_visit.append((newPos, visited[newPos]))
 
-      # if newPos in visited:
-      #   # if (visited[newPos] == val-1 or visited[newPos] == val-1000 or visited[newPos] == val-1001):
-      #     if pos == util.Vector((1, 11)):
-      #       print('XX', pos, val, newPos, visited[newPos])
-      #     to_visit.append((newPos, visited[newPos]))
   for s in spots:
     map.set_vector(s, 'G')
   print(map)
-  # print(visited[util.Vector((4, 7))])
-  # print(visited[util.Vector((5, 7))])
-  # print(visited[util.Vector((5, 8))])
   return len(spots)
 
 
