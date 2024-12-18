@@ -42,6 +42,14 @@ class Vector(object):
     self.pos = tuple([p % o for p, o in zip(self.pos, other.get())])
     return self
 
+  def __lt__(self, other):
+    for a, b in zip(self.get(), other.get()):
+      if a == b:
+        continue
+      else:
+        return a < b
+    return -1
+
   def __hash__(self):
     return hash(self.pos)
 
